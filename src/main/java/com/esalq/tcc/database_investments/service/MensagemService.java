@@ -1,19 +1,28 @@
 package com.esalq.tcc.database_investments.service;
+
 import org.springframework.stereotype.Service;
 
 import com.esalq.tcc.database_investments.model.Acao;
-import com.esalq.tcc.database_investments.repository.MensagemRepository;
+import com.esalq.tcc.database_investments.model.Wallet;
+import com.esalq.tcc.database_investments.repository.AssetRepository;
+import com.esalq.tcc.database_investments.repository.WalletRepository;
 
 @Service
 public class MensagemService {
 
-    private final MensagemRepository mensagemRepository;
+    private final AssetRepository assetRepository;
+    private final WalletRepository walletRepository;
 
-    public MensagemService(MensagemRepository mensagemRepository) {
-        this.mensagemRepository = mensagemRepository;
+    public MensagemService(AssetRepository assetRepository, WalletRepository walletRepository) {
+        this.assetRepository = assetRepository;
+        this.walletRepository = walletRepository;
     }
 
-    public void salvarMensagem(Acao acao) {
-        mensagemRepository.save(acao);
+    public void saveAsset(Acao acao) {
+    	assetRepository.save(acao);
+    }
+    
+    public void saveWallet(Wallet wallet) {
+    	walletRepository.save(wallet);
     }
 }
